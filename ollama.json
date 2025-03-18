@@ -1,0 +1,9 @@
+{
+    "model": "gemma3:1b",
+    "stream": false,
+    "messages": [
+      { "role": "user", "content": "Say hello." }
+    ]
+}
+
+

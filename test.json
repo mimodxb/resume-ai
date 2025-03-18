@@ -1,0 +1,29 @@
+{
+  "applicantInfo": {
+    "name": "Daniel Dias",
+    "professional_profile": "Cloud Engineer Intern...",
+    "skills": ["Cloud Infrastructure", "Oracle Cloud", "SQL"],
+    "experience": [
+      {
+        "job_title": "Technology Consultant Intern",
+        "company": "Oracle Partner Firm",
+        "location": "São Paulo, Brazil",
+        "start_date": "Jan 2023",
+        "end_date": "Dec 2023",
+        "achievements": [
+          "Developed cloud integrations",
+          "Optimized SQL performance"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor's in Computer Science",
+        "institution": "University of São Paulo",
+        "location": "São Paulo, Brazil",
+        "graduation_date": "Expected 2025"
+      }
+    ]
+  },
+  "jobDescription": "Cloud Engineer Intern - AWS, Docker, Kubernetes..."
+}
