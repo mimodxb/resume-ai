@@ -1,4 +1,4 @@
-Here’s your fully organized single markdown document with structured installation steps, API usage, and contribution guidelines.
+Make sure your ENV files are properly set with your backend, front end and ollama serving port!
 
 # 🚀 AI-Powered Resume Generator
 
