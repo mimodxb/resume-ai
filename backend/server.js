@@ -5,9 +5,9 @@ const resumeRoutes = require("./routes/resumeRoutes");
 
 const app = express();
 
-// ✅ Fix: Ensure CORS allows requests from frontend (port 3000)
+// ✅ Fix: Ensure CORS allows requests from frontend
 app.use(cors({
-    origin: "http://localhost:3000",  // Allows frontend requests
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",  // Allows frontend requests
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"]
 }));
