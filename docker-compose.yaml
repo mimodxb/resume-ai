@@ -1,0 +1,20 @@
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+    - 8080:8080
+
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+    - ./output:/home/node/app/output
+    environment:
+    - CORS_ORIGIN=http://localhost:8080
+    - OLLAMA_URL=http://host.docker.internal:11434/api/generate
+    - MODEL_NAME=gemma3:1b
+    - PORT=5001
+    ports:
+    - 5001:5001
