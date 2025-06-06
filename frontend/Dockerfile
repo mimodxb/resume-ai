@@ -1,4 +1,4 @@
-FROM node:23-alpine
+FROM node:23-alpine AS builder
 
 RUN mkdir -p /home/node/app/node_modules
 
@@ -10,10 +10,11 @@ RUN chown -R node:node /home/node/app
 
 USER node
 
-RUN npm install
-
 COPY --chown=node:node . .
 
-EXPOSE 3000
+RUN npm install && npm run build
 
-CMD [ "npm", "start" ]
+
+FROM bitnami/nginx:latest
+
+COPY --from=builder /home/node/app/build /app/
