@@ -75,12 +75,12 @@ It should log:
 
 To test the resume generator, send a request using cURL:
 
-curl -X POST http://localhost:5001/api/resume/generate \
-     -H "Content-Type: application/json" \
-     -d '{
-       "resumeText": "John Doe is a Cloud Engineer...",
-       "jobDescription": "Cloud Engineer - AWS, Kubernetes"
-     }'
+	curl -X POST http://localhost:5001/api/resume/generate \
+	  -H "Content-Type: application/json" \
+	  -d '{
+	         "resumeText": "John Doe is a Cloud Engineer...",
+	         "jobDescription": "Cloud Engineer - AWS, Kubernetes"
+	  }'
 
 It should return structured JSON.
 
