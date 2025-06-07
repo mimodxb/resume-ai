@@ -54,12 +54,12 @@ npm install
 Create a .env file in the root directory and add:
 ```
 OLLAMA_URL=http://localhost:11434/api/generate
-MODEL_NAME=gemma:3b
+MODEL_NAME=gemma3:1b
 PORT=5001
 ```
 4️⃣ **Download the Ollama model (Gemma 3B/1B)**
 
-ollama pull gemma:3b
+ollama pull gemma3:1b
 
 🚀 Running the API
 
