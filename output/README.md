@@ -1,0 +1,1 @@
+This directory contains the generated `.docx` files when the app is run with `docker compose`.

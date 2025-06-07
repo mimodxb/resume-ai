@@ -14,7 +14,6 @@ debug.log
 .env
 
 # Output files
-/output/
 *.docx
 *.pdf
 
