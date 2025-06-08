@@ -13,7 +13,7 @@ services:
     - ./output:/home/node/app/output
     environment:
     - CORS_ORIGIN=http://localhost:8080
-    - OLLAMA_URL=http://host.docker.internal:11434/api/generate
+    - LLM_URL=http://host.docker.internal:11434/api/generate
     - MODEL_NAME=gemma3:1b
     - PORT=5001
     ports:

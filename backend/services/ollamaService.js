@@ -20,7 +20,7 @@ async function generateResumeData(resumeText, jobDescription) {
             .replace("{jobDescription}", jobDescription);
 
         // Step 3: Send the request to Ollama API with the generated prompt
-        const response = await axios.post(process.env.OLLAMA_URL, {
+        const response = await axios.post(process.env.LLM_URL, {
             model: process.env.MODEL_NAME,
             stream: false,
             prompt: prompt,
