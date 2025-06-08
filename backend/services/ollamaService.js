@@ -16,13 +16,6 @@ async function callLLM(prompt) {
         logger.info("📡 Ollama API Raw Response:", response.data);
 
         return response.data.response;
-        // Step 4: Clean the response (remove any unwanted formatting like Markdown)
-        let rawResponse = response.data.response.trim();
-        if (rawResponse.startsWith("```json")) {
-            rawResponse = rawResponse.replace(/^```json\n/, "").replace(/\n```$/, "");
-        }
-
-        return JSON.parse(rawResponse);
     } catch (error) {
         logger.error("🔥 Ollama API Error:", error);
         throw new Error("Failed to get response from Ollama.");
