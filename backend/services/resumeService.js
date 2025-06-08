@@ -1,9 +1,11 @@
 const { generatePrompt } = require("./promptService");
-const { callLLM } = require("./ollamaService");
 const { cleanResponse } = require("./cleanResponseService");
 const { applyMarkdownTemplate } = require("./markdownService");
 const { convertMarkdownToDocx } = require("./pandocService");
 const logger = require("../config/logger");
+require("dotenv").config();
+const llm = process.env.LLM || "ollamaService";
+const { callLLM } = require("./" + llm);
 
 async function processResume(resumeText, jobDescription) {
     try {
