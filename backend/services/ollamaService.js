@@ -1,25 +1,12 @@
 const axios = require("axios");
 const logger = require("../config/logger");
-const fs = require("fs");  // Add the fs module
-const path = require("path"); // Import the 'path' module
 require("dotenv").config();
 
-async function generateResumeData(resumeText, jobDescription) {
+async function callLLM(prompt) {
     try {
-        logger.info("📡 Calling Ollama API for structured resume data", { resumeText, jobDescription });
+        logger.info("📡 Calling Ollama API for structured resume data", { prompt });
 
-        // Step 1: Construct the full path to the prompt template
-        const promptPath = path.resolve(__dirname, '../prompts/resumePrompt.txt');
-        console.log("Attempting to read prompt template from:", promptPath); // Add this line
-
-        const promptTemplate = fs.readFileSync(promptPath, 'utf8');
-
-        // Step 2: Replace placeholders with actual resumeText and jobDescription
-        const prompt = promptTemplate
-            .replace("{resumeText}", resumeText)
-            .replace("{jobDescription}", jobDescription);
-
-        // Step 3: Send the request to Ollama API with the generated prompt
+        // Send the request to Ollama API with the generated prompt
         const response = await axios.post(process.env.LLM_URL, {
             model: process.env.MODEL_NAME,
             stream: false,
@@ -28,6 +15,7 @@ async function generateResumeData(resumeText, jobDescription) {
 
         logger.info("📡 Ollama API Raw Response:", response.data);
 
+        return response.data.response;
         // Step 4: Clean the response (remove any unwanted formatting like Markdown)
         let rawResponse = response.data.response.trim();
         if (rawResponse.startsWith("```json")) {
@@ -37,8 +25,8 @@ async function generateResumeData(resumeText, jobDescription) {
         return JSON.parse(rawResponse);
     } catch (error) {
         logger.error("🔥 Ollama API Error:", error);
-        throw new Error("Failed to generate structured JSON from Ollama.");
+        throw new Error("Failed to get response from Ollama.");
     }
 }
 
-module.exports = { generateResumeData };
+module.exports = { callLLM };

@@ -1,18 +1,24 @@
-const { generateResumeData } = require("./ollamaService");
+const { generatePrompt } = require("./promptService");
+const { callLLM } = require("./ollamaService");
+const { cleanResponse } = require("./cleanResponseService");
 const { applyMarkdownTemplate } = require("./markdownService");
 const { convertMarkdownToDocx } = require("./pandocService");
 const logger = require("../config/logger");
 
 async function processResume(resumeText, jobDescription) {
     try {
-        logger.info("📡 Sending request to Ollama...");
-        const resumeData = await generateResumeData(resumeText, jobDescription);
+        logger.info("📡 Generating prompt...");
+        const prompt = await generatePrompt(resumeText, jobDescription);
+        logger.info("📡 Sending request to LLM...");
+        const llmResponse = await callLLM(prompt);
+        logger.info("📡 Cleaning LLM response...");
+        const resumeData = await cleanResponse(llmResponse);
 
         if (!resumeData) {
-            logger.error("❌ Ollama did not return structured JSON");
-            throw new Error("Ollama failed to generate structured JSON");
+            logger.error("❌ LLM did not return structured JSON");
+            throw new Error("LLM failed to generate structured JSON");
         }
-        logger.info("✅ Ollama returned structured JSON", resumeData);
+        logger.info("✅ LLM returned structured JSON", resumeData);
 
         logger.info("📄 Applying Markdown template...");
         const markdown = applyMarkdownTemplate(resumeData);
