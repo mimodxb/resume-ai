@@ -53,7 +53,7 @@ npm install
 3️⃣ Set up environment variables
 Create a .env file in the root directory and add:
 ```
-OLLAMA_URL=http://localhost:11434/api/generate
+LLM_URL=http://localhost:11434/api/generate
 MODEL_NAME=gemma3:1b
 PORT=5001
 ```
