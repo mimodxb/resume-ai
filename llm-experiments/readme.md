@@ -26,7 +26,7 @@ source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-Make sure Ollama is installed and running locally
+Make sure Ollama is installed and running locally (Gemma 3 1B Hardcoded, change utils for other models)
 
 3. Run your first prompt
 ```bash
