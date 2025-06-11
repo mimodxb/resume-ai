@@ -19,3 +19,38 @@ debug.log
 
 # Ollama cache
 ~/.ollama/
+
+## ML Flow 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# MLflow local artifacts
+mlruns/
+mlartifacts/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+*.log
+*.tmp
+*.bak
+
+# Notebooks (optional)
+notebooks/*.ipynb
+
+# Pytest cache (if you add tests later)
+.pytest_cache/
