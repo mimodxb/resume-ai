@@ -1,4 +1,5 @@
 Make sure your ENV files are properly set with your backend, front end and ollama serving port!
+
 [Check Discussions](https://github.com/resume-llm/resume-ai/discussions) 
 # 🚀 AI-Powered Resume Generator
 
