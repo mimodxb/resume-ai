@@ -20,7 +20,7 @@ cd llm-experiments
 
 2. Set up environment
 
-python -m venv .venv
+pip install -r requirements.txt
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 pip install -r requirements.txt
 
