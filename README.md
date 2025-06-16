@@ -1,108 +1,42 @@
-Make sure your ENV files are properly set with your backend, front end and ollama serving port!
+# 🧠 Resume Builder App
 
-[Check Discussions](https://github.com/resume-llm/resume-ai/discussions) 
-# 🚀 AI-Powered Resume Generator
+This application generates ATS-friendly resumes based on job descriptions and unstructured input data. It is composed of a `frontend` and `backend` service, orchestrated using Docker Compose.
 
-## 📌 Overview
-This project is an **AI-powered resume generator** designed to take **unstructured profile information and job descriptions** as input, then generate **ATS-friendly, structured resumes** using **Ollama + Gemma 3B/1B**.  
+## 📦 Requirements
 
-The goal is to transform vague, unstructured resume data into **professionally formatted, job-tailored resumes**, ensuring:  
-✅ **STAR method for experience** (Situation, Task, Action, Result)  
-✅ **Job description alignment** (matches employer expectations)  
-✅ **ATS compatibility** (optimized for applicant tracking systems)  
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-## 🛠️ Tech Stack
-- **[Ollama](https://ollama.com/)** (for local LLM execution)  
-- **Gemma 3B/1B** (lightweight LLM)  
-- **Node.js + Express** (backend API to process resumes)  
-- **Handlebars.js** (template engine for structured resume formatting)  
-- **Pandoc** (for conversion to .docx)  
+## 🚀 Running the App
 
-## 🔧 How It Works
-1. **User submits unstructured profile + job description**  
-2. **Ollama + Gemma processes the input**  
-   - Reformats vague experience using the **STAR method**  
-   - Aligns content with **job description requirements**  
-   - Ensures **structured JSON output**  
-3. **Handlebars.js formats the resume** (Markdown → .docx conversion via Pandoc)  
-4. **Final resume is exported as a professional document**  
-
----
-
-## 🚀 Installation & Setup
-
-### 📌 Prerequisites  
-Before starting, ensure you have the following installed:  
-✅ **[Node.js & npm](https://nodejs.org/)**  
-✅ **[Ollama](https://ollama.com/)** (for running Gemma locally)  
-✅ **[Pandoc](https://pandoc.org/installing.html)** (for Markdown to `.docx` conversion)  
-
----
-
-### 🔧 Installation Steps
-
-1️⃣ **Clone the repository**  
-```bash
-git clone https://github.com/your-repo/resume-ai.git
-cd resume-ai
-```
-2️⃣ **Install dependencies**
+To start the application, run:
 
 ```bash
-npm install
+docker-compose up --build
 ```
-3️⃣ Set up environment variables
-Create a .env file in the root directory and add:
-```
-LLM_URL=http://localhost:11434/api/generate
-MODEL_NAME=gemma3:1b
-PORT=5001
-```
-4️⃣ **Download the Ollama model (Gemma 3B/1B)**
+	•	The frontend will be available at: http://localhost:8080
+	•	The backend API will be available at: http://localhost:5001
 
-ollama pull gemma3:1b
+## 🌐 Backend Environment Variables
 
-🚀 Running the API
+CORS_ORIGIN	Allowed origin for frontend requests
+LLM_URL	URL to the LLM API (e.g., Ollama instance)
+MODEL_NAME	Model to use for inference
+PORT	Port the backend service listens on
 
-Start the server:
+## 📂 Output Directory
 
-npm start
+All generated resumes and related files are saved in the local ./output directory, which is mounted into the backend container.
 
-It should log:
+## 📌 Kanban-Board (New Version — Under Development)
 
-🚀 Server running on port 5001
+A new version of the application is being developed inside the kanban-board folder.
 
-📡 API Usage
+This new app is a standalone service that includes:
 
-To test the resume generator, send a request using cURL:
+	•	Resume generation (currently does not export yet)
+	•	A Kanban board to track your job applications
+	•	AI-powered actionables to help you move each application forward
 
-	curl -X POST http://localhost:5001/api/resume/generate \
-	  -H "Content-Type: application/json" \
-	  -d '{
-	         "resumeText": "John Doe is a Cloud Engineer...",
-	         "jobDescription": "Cloud Engineer - AWS, Kubernetes"
-	  }'
+To run or contribute to this new version, please refer to the documentation in kanban-board/README.md.
 
-It should return structured JSON.
-
-🛠️ Running Tests
-
-1️⃣ Run Unit Tests
-
-npm test
-
-2️⃣ Check for Linting Errors
-
-npm run lint
-
-📦 Converting Markdown to .docx
-
-After generating the Markdown resume, convert it to .docx using Pandoc:
-
-pandoc output/resume.md -o output/resume.docx
-
-📜 Contribution Guidelines
-
-1️⃣ Fork the repository
-2️⃣ Create a new branch for your feature
-3️⃣ Submit a pull request with a description of your changes
