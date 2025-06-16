@@ -35,8 +35,8 @@ To run this version locally using Docker:
 
 ```bash
 # Clone the repository if you haven't
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/resume-llm/resume-ai.git
+cd resume-ai
 
 # Navigate to the kanban-board folder
 cd kanban-board
