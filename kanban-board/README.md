@@ -37,10 +37,12 @@ To run this version locally using Docker:
 # Clone the repository if you haven't
 git clone https://github.com/resume-llm/resume-ai.git
 cd resume-ai
-
+```
+```bash
 # Navigate to the kanban-board folder
 cd kanban-board
-
+```
+```bash
 # Build the Docker image
 docker build -t kanban-next-app .
 ```
